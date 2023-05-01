@@ -9,4 +9,5 @@ header {
 .logo {
   display: flex;
   gap: 15px;
+  cursor: pointer;
 }

@@ -3,6 +3,8 @@ import { createContext, useEffect, useState } from "react";
 import Header from "./Components/header/Header";
 import Main from "./Components/main/Main";
 import axios from "axios";
+import { Route, Router, Routes } from "react-router-dom";
+import CartPage from "./pages/cartPage";
 
 export const StoreContext = createContext();
 function App() {
@@ -33,7 +35,10 @@ function App() {
     <div className="container">
       <StoreContext.Provider value={{ pizzas, categories, sortItems }}>
         <Header />
-        <Main />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/cart" element={<CartPage />} />
+        </Routes>
       </StoreContext.Provider>
     </div>
   );

@@ -24,8 +24,9 @@ body {
   background-color: #ffffff;
 }
 
-.button {
-  border: none;
+.button,
+.button.outline:hover {
+  border: 1px solid #fe5f1e;
   outline: none;
   padding: 10px;
   background-color: #fe5f1e;
@@ -36,4 +37,15 @@ body {
 }
 .button:hover {
   background-color: #fa8658;
+}
+
+.button.outline {
+  border: 1px solid #fe5f1e;
+  outline: none;
+  padding: 10px;
+  background-color: transparent;
+  color: #fe5f1e;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
 }

@@ -19,7 +19,7 @@ export default function Card({ title, price, img }) {
       </div>
       <div className="bottom">
         <h2>{price} $</h2>
-        <button className="button">+ Add to cart</button>
+        <button className="button outline">+ Add to cart</button>
       </div>
     </div>
   );
