@@ -1,0 +1,39 @@
+{
+    "robots" :[
+        {
+            "id": "1",
+            "name": "Temo",
+            "email": "temo@gmail.com"
+        },
+        {
+            "id": "2",
+            "name": "Misha",
+            "email": "Misha@gmail.com"
+        },
+        {
+            "id": "3",
+            "name": "Otari",
+            "email": "Otari@gmail.com"
+        },
+        {
+            "id": "4",
+            "name": "Daviti",
+            "email": "Daviti@gmail.com"
+        },
+        {
+            "id": "5",
+            "name": "Giorgi",
+            "email": "Giorgi@gmail.com"
+        },
+        {
+            "id": "6",
+            "name": "Levani",
+            "email": "Levani@gmail.com"
+        },
+        {
+            "id": "7",
+            "name": "Lasha",
+            "email": "Lasha@gmail.com"
+        }
+    ]
+}
