@@ -1,45 +1,28 @@
-import "./App.css";
-import { createContext, useEffect, useState } from "react";
-import Header from "./Components/header/Header";
-import Main from "./Components/main/Main";
-import axios from "axios";
-import { Route, Router, Routes } from "react-router-dom";
-import CartPage from "./pages/cartPage";
+import Categories from "./components/Categories";
+import Header from "./components/Header";
+import PizzaBlock from "./components/PizzaBlock";
+import Sort from "./components/Sort";
+import "./scss/app.scss";
+import data from "./db.json";
 
-export const StoreContext = createContext();
 function App() {
-  const [pizzas, setPizzas] = useState([]);
-  const [sortItems, setSortItems] = useState([
-    "Popular",
-    "By price",
-    "Alphabet",
-  ]);
-  const [categories, setCategories] = useState([
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ]);
-
-  const getPizzas = async () => {
-    const items = await axios.get("http://localhost:3000/db.json");
-    setPizzas(items.data.pizzas);
-  };
-
-  useEffect(() => {
-    getPizzas();
-  }, []);
-
   return (
-    <div className="container">
-      <StoreContext.Provider value={{ pizzas, categories, sortItems }}>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/cart" element={<CartPage />} />
-        </Routes>
-      </StoreContext.Provider>
+    <div className="wrapper">
+      <Header />
+      <div className="content">
+        <div className="container">
+          <div className="content__top">
+            <Categories />
+            <Sort />
+          </div>
+          <h2 className="content__title">All pizzas</h2>
+          <div className="content__items">
+            {data.pizzas.map((obj) => (
+              <PizzaBlock key={obj.id} {...obj} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
