@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Categories() {
+function Categories({ activeCategory, setActiveCategory }) {
   const categories = [
     "Все",
     "Мясные",
@@ -9,7 +9,7 @@ function Categories() {
     "Острые",
     "Закрытые",
   ];
-  const [activeCategory, setActiveCategory] = useState(0);
+
   return (
     <div className="categories">
       <ul>
