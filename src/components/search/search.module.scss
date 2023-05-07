@@ -8,6 +8,9 @@
   width: 400px;
   border-radius: 10px;
   font-size: 16px;
+  @media (max-width: 1000px) {
+    width: 200px;
+  }
 
   &:focus {
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -35,4 +38,19 @@
   &:hover {
     opacity: 0.8;
   }
+}
+.clearBtn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+}
+.clearBtn.hidden {
+  display: none;
 }

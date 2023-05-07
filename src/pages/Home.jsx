@@ -14,8 +14,10 @@ import React from "react";
 function Home() {
   const activeCategory = useSelector((state) => state.filter.categoryId);
   const searchValue = useSelector((state) => state.filter.searchValue);
+  const sort = useSelector((state) => state.filter.sort);
   const dispatch = useDispatch();
-
+  const sortBy = sort.sortProperty.replace("-", "");
+  const sortType = sort.sortProperty.includes("-") ? "desc" : "asc";
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,7 +27,7 @@ function Home() {
       .get(
         `https://64527bb3bce0b0a0f748372b.mockapi.io/items?${
           activeCategory > 0 ? "category=" + activeCategory : ""
-        }&sortBy=rating&order=desc&name=${searchValue}`
+        }&sortBy=${sortBy}&order=${sortType}&name=${searchValue}`
       )
       .then((list) => {
         setItems(list.data);
@@ -36,8 +38,8 @@ function Home() {
   useEffect(() => {
     getData();
     window.scrollTo(0, 0);
-  }, [activeCategory, searchValue]);
-
+  }, [activeCategory, searchValue, sort]);
+  console.log(sortBy, sortType);
   return (
     <div className="container">
       <div className="content__top">
