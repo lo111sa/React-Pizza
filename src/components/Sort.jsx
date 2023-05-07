@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 
 function Sort() {
-  const list = ["Popular", "Price", "Alphabet"];
+  const list = [
+    "Popular(ASC)",
+    "Popular(DESC)",
+    "Price(ASC)",
+    "Price(DESC)",
+    "Alphabet",
+  ];
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(0);
 

@@ -6,35 +6,44 @@ import "../scss/app.scss";
 import axios from "axios";
 import PizzaSkeleton from "../components/PizzaSkeleton";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setCategoryId } from "../redux/slices/filterSlice";
+
 import React from "react";
 
 function Home() {
+  const activeCategory = useSelector((state) => state.filter.categoryId);
+  const searchValue = useSelector((state) => state.filter.searchValue);
+  const dispatch = useDispatch();
+
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState(0);
 
   const getData = async () => {
     setIsLoading(true);
-    const list = await axios.get(
-      `https://64527bb3bce0b0a0f748372b.mockapi.io/items?category=${
-        activeCategory > 0 ? activeCategory : ""
-      }`
-    );
-    setItems(list.data);
-    setIsLoading(false);
+    await axios
+      .get(
+        `https://64527bb3bce0b0a0f748372b.mockapi.io/items?${
+          activeCategory > 0 ? "category=" + activeCategory : ""
+        }&sortBy=rating&order=desc&name=${searchValue}`
+      )
+      .then((list) => {
+        setItems(list.data);
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
     getData();
     window.scrollTo(0, 0);
-  }, [activeCategory]);
+  }, [activeCategory, searchValue]);
 
   return (
     <div className="container">
       <div className="content__top">
         <Categories
           activeCategory={activeCategory}
-          setActiveCategory={(id) => setActiveCategory(id)}
+          setActiveCategory={(id) => dispatch(setCategoryId(id))}
         />
         <Sort />
       </div>
