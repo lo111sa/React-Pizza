@@ -21,14 +21,14 @@ function Sort() {
     setOpen(!open);
     dispatch(setSort(obj));
   };
-  useEffect(() => {
+  /*  useEffect(() => {
     document.body.addEventListener("click", (e) => {
       if (!e.path.includes(sortRef.current)) {
         console.log("yes");
         setOpen(false);
       }
     });
-  }, []);
+  }, []); */
   return (
     <div ref={sortRef} className="sort">
       <div className="sort__label">
