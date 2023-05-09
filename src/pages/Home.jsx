@@ -39,7 +39,7 @@ function Home() {
     getData();
     window.scrollTo(0, 0);
   }, [activeCategory, searchValue, sort]);
-  console.log(sortBy, sortType);
+
   return (
     <div className="container">
       <div className="content__top">
