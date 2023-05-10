@@ -4,8 +4,8 @@ import { Search } from "./search";
 import { useSelector } from "react-redux";
 
 function Header() {
-  const count = useSelector((state) => state.cart.count);
-  const sum = useSelector((state) => state.cart.sum);
+  const count = useSelector((state: any) => state.cart.count);
+  const sum = useSelector((state: any) => state.cart.sum);
 
   return (
     <div className="header">

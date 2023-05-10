@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import "./scss/app.scss";
 import { NotFound } from "./pages/NotFound";
 import { Cart } from "./pages/Cart";
-/* import data from "./db.json"; */
 
 function App() {
   return (

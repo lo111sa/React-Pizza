@@ -1,7 +1,17 @@
-import React, { useState } from "react";
+type categoriesProps = { activeCategory: number; setActiveCategory: any };
 
-function Categories({ activeCategory, setActiveCategory }) {
-  const categories = ["All", "With meat", "Vegan", "Grill", "Spicy", "Closed"];
+const Categories: React.FC<categoriesProps> = ({
+  activeCategory,
+  setActiveCategory,
+}) => {
+  const categories: string[] = [
+    "All",
+    "With meat",
+    "Vegan",
+    "Grill",
+    "Spicy",
+    "Closed",
+  ];
 
   return (
     <div className="categories">
@@ -18,6 +28,6 @@ function Categories({ activeCategory, setActiveCategory }) {
       </ul>
     </div>
   );
-}
+};
 
 export default Categories;
