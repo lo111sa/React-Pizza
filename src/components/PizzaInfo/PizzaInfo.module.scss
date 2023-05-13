@@ -1,0 +1,11 @@
+.root {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.img {
+  @media (max-width: 790px) {
+    width: 260px;
+    height: 260px;
+  }
+}

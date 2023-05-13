@@ -11,13 +11,13 @@ const list = [
   { name: "Alphabet (DESC)", sortProperty: "-title" },
 ];
 
-function Sort() {
-  const sortRef = useRef();
+const Sort: React.FC = () => {
+  const sortRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const sort = useSelector((state) => state.filter.sort);
+  const sort = useSelector((state: any) => state.filter.sort);
   const [open, setOpen] = useState(false);
 
-  const onItemClick = (obj) => {
+  const onItemClick = (obj: {}) => {
     setOpen(!open);
     dispatch(setSort(obj));
   };
@@ -66,6 +66,6 @@ function Sort() {
       )}
     </div>
   );
-}
+};
 
 export default Sort;

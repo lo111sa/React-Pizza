@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import "./scss/app.scss";
 import { NotFound } from "./pages/NotFound";
 import { Cart } from "./pages/Cart";
-/* import data from "./db.json"; */
+import { PizzaInfo } from "./components/PizzaInfo";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/pizza/:id" element={<PizzaInfo />} />
       </Routes>
     </div>
   );

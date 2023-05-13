@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CartEmpty = () => {
+export const CartEmpty: React.FC = () => {
   return (
     <div className="cart cart--empty">
       <h2>Cart is empty 😕</h2>

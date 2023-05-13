@@ -11,13 +11,14 @@ import { setCategoryId } from "../redux/slices/filterSlice";
 
 import React from "react";
 
-function Home() {
-  const activeCategory = useSelector((state) => state.filter.categoryId);
-  const searchValue = useSelector((state) => state.filter.searchValue);
-  const sort = useSelector((state) => state.filter.sort);
+const Home: React.FC = () => {
+  const { categoryId, searchValue, sort } = useSelector(
+    (state: any) => state.filter
+  );
+
   const dispatch = useDispatch();
-  const sortBy = sort.sortProperty.replace("-", "");
-  const sortType = sort.sortProperty.includes("-") ? "desc" : "asc";
+  const sortBy: string = sort.sortProperty.replace("-", "");
+  const sortType: string = sort.sortProperty.includes("-") ? "desc" : "asc";
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,7 +27,7 @@ function Home() {
     await axios
       .get(
         `https://64527bb3bce0b0a0f748372b.mockapi.io/items?${
-          activeCategory > 0 ? "category=" + activeCategory : ""
+          categoryId > 0 ? "category=" + categoryId : ""
         }&sortBy=${sortBy}&order=${sortType}&name=${searchValue}`
       )
       .then((list) => {
@@ -38,14 +39,14 @@ function Home() {
   useEffect(() => {
     getData();
     window.scrollTo(0, 0);
-  }, [activeCategory, searchValue, sort]);
+  }, [categoryId, searchValue, sort]);
 
   return (
     <div className="container">
       <div className="content__top">
         <Categories
-          activeCategory={activeCategory}
-          setActiveCategory={(id) => dispatch(setCategoryId(id))}
+          categoryId={categoryId}
+          setActiveCategory={(id: string) => dispatch(setCategoryId(id))}
         />
         <Sort />
       </div>
@@ -53,10 +54,10 @@ function Home() {
       <div className="content__items">
         {isLoading
           ? [...new Array(6)].map((_, i) => <PizzaSkeleton key={i} />)
-          : items.map((obj, i) => <PizzaBlock key={i} {...obj} />)}
+          : items.map((obj: any, i: number) => <PizzaBlock key={i} {...obj} />)}
       </div>
     </div>
   );
-}
+};
 
 export default Home;
